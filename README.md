@@ -1,5 +1,4 @@
 # Simple terminal app in Node.js
-## _Weather and Location_
 
 ## Installation
 
@@ -27,6 +26,6 @@ npm run start
 > Note: Remove the word: "example" to the: "example.env" file.
 
 ## Images
-![](/images/cities.png)
-![](/images/menu.png)
-![](/images/result.png)
+![](/images/cities.png){width='400px'}
+![](/images/menu.png){width='400px'}
+![](/images/result.png){width='400px'}
