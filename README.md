@@ -36,7 +36,7 @@ Documentation of each module.
 | fs | [https://www.npmjs.com/package/fs](https://www.npmjs.com/package/fs) |
 
 ## Images
-![](/images/menu.png)
-![](/images/cities.png)
-![](/images/result.png)
-![](/images/history.png)
+![menu](/images/menu.png)
+![cities](/images/cities.png)
+![result](/images/result.png)
+![hisotry](/images/history.png)
