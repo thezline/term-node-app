@@ -1,4 +1,4 @@
-# Simple terminal app in Node.js
+# Basic terminal app in Node.js
 
 ## Installation
 
@@ -33,8 +33,10 @@ Documentation of each module.
 | colors | [https://www.npmjs.com/package/colors](https://www.npmjs.com/package/colors) |
 | dotenv | [https://www.npmjs.com/package/dotenv](https://www.npmjs.com/package/dotenv) |
 | inquirer | [https://www.npmjs.com/package/inquirer](https://www.npmjs.com/package/inquirer) |
+| fs | [https://www.npmjs.com/package/fs](https://www.npmjs.com/package/fs) |
 
 ## Images
-![](/images/cities.png)
 ![](/images/menu.png)
+![](/images/cities.png)
 ![](/images/result.png)
+![](/images/history.png)
