@@ -1,5 +1,5 @@
 const { inquirerMenu, stop } = require('./helpers/inquirer');
-const { getCityAndWeatherCase1 } = require('./controllers/city');
+const { getCityAndWeather, getHistoryOfCities } = require('./controllers/city');
 require('dotenv').config();
 
 const main = async () => {
@@ -10,7 +10,11 @@ const main = async () => {
 
         switch (opt) {
             case 1:
-                await getCityAndWeatherCase1();
+                await getCityAndWeather();
+                break;
+
+            case 2:
+                getHistoryOfCities();
                 break;
         }
 

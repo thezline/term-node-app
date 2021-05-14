@@ -11,10 +11,10 @@ const options = [
                 value: 1,
                 name: `${'1.'.green} City`
             },
-            /*{
+            {
                 value: 2,
                 name: `${'2.'.green} History`
-            },*/
+            },
             {
                 value: 0,
                 name: `${'0.'.green} ${'Close'.red}`

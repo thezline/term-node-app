@@ -3,7 +3,7 @@ const Searches = require('../models/searches');
 
 const searches = new Searches();
 
-const getCityAndWeatherCase1 = async () => {
+const getCityAndWeather = async () => {
     // Input
     const city = await readInput('City: ');
 
@@ -13,6 +13,9 @@ const getCityAndWeatherCase1 = async () => {
     // Select the city
     const id = await listCities(cities);
     const selectedCity = cities.find(c => c.id === id);
+
+    // Save the city in the object in searches (or in DB)
+    searches.setHistory(selectedCity.name);
 
     // Weather result
     const weather = await searches.weather(selectedCity.lat, selectedCity.lng);
@@ -27,8 +30,15 @@ const getCityAndWeatherCase1 = async () => {
     console.log('Temp: ', temp);
     console.log('Max: ', max);
     console.log('Min: ', min);
-    console.log('Description: ', desc);
+    console.log('Description:', desc);
 }
 
-module.exports = { getCityAndWeatherCase1 }
+const getHistoryOfCities = () => {
+    searches.historyCap.forEach((city, index) => {
+        const idx = `${index + 1}.`.green;
+        console.log(`${idx} ${city}`);
+    }); 
+}
+
+module.exports = { getCityAndWeather, getHistoryOfCities }
 

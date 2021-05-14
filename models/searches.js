@@ -1,10 +1,21 @@
 const axios = require('axios');
+const fs = require('fs');
 
 class Searches {
-    history = [''];
+    historyArray = [];
+    path = './files/file.json';
 
     constructor() {
-        //TODO: will read database if it exists
+        this.readFile();
+    }
+
+    get historyCap() {
+        return this.historyArray.map(city => {
+            let words = city.split(' ');
+            words = words.map(w => w[0].toUpperCase() + w.substring(1));
+
+            return words.join(' ');
+        });
     }
 
     get paramsMapBox() {
@@ -14,6 +25,14 @@ class Searches {
             'autocomplete': true,
             'language': 'en',
             'limit': 5
+        }
+    }
+
+    get paramsOpenWeather() {
+        return {
+            appid: process.env.OPEN_WEATHER_TOKEN,
+            units: 'metric',
+            lang: 'en'
         }
     }
 
@@ -38,14 +57,6 @@ class Searches {
         }
     }
     
-    get paramsOpenWeather() {
-        return {
-            appid: process.env.OPEN_WEATHER_TOKEN,
-            units: 'metric',
-            lang: 'en'
-        }
-    }
-
     async weather(lat, lon) {
         try {
             const instance = axios.create({
@@ -65,6 +76,35 @@ class Searches {
         } catch (error) {
             console.log(error)
         }
+    }
+
+    setHistory(city = '') {
+        if(this.historyArray.includes(city.toLowerCase())) {
+            return;
+        }
+
+        this.historyArray = this.historyArray.splice(0, 4)
+
+        this.historyArray.unshift(city.toLowerCase());
+        this.saveInFile();
+    }
+
+    saveInFile() {
+        const payload = {
+            historyArray: this.historyArray
+        }
+
+        fs.writeFileSync(this.path, JSON.stringify(payload));
+    }
+
+    readFile() {
+        if(!fs.existsSync(this.path)) return;
+
+        const info = fs.readFileSync(this.path, { encoding: 'utf8' });
+        const data = JSON.parse(info)
+
+        this.historyArray = data.historyArray;
+        console.log(this.historyArray)
     }
 }
 
